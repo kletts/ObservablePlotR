@@ -9,7 +9,7 @@ This repository includes functions which facilitate using the Observable plot li
 Examples of using the Observable and the functions provided are available in the Examples folder. The second uses the 
 `mtcars` dataset to illustrate reactive elements. 
 
-![Example Two](example.png){width=500 height=500}
+<img src="example.png" width="400" height="400">
 
 # Installation 
 
