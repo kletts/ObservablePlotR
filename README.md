@@ -6,7 +6,10 @@ Observable plots are already available in {ojs} blocks in [Quarto](https://quart
 
 This repository includes functions which facilitate using the Observable plot library in R shiny apps, using R shiny inputs and data objects. 
 
-An example app using the  `mtcars` dataset is provided in `
+Examples of using the Observable and the functions provided are available in the Examples folder. The second uses the 
+`mtcars` dataset to illustrate reactive elements. 
+
+![Example Two](example.png){width=500 height=500}
 
 # Installation 
 
@@ -26,6 +29,8 @@ fluidPage(
     ...
 ```
 
+# Usage
+
 Observable plots are called in shiny using the  `uiOutput` `renderUI` function pairs. In the UI, include the plot output: 
 
 ```
@@ -42,7 +47,10 @@ In the server:
 server <- function(input, output) { 
   output$myplot <- renderUI({ 
     ObservablePlotR::obsjs_plot(inputId="myplot", 
-      ObservablePlotR::obsjs_mark(mark="barY", data=data.frame(x=letters[1:5], y=1:5), options=list(x="x", y="y")))
+      ObservablePlotR::obsjs_mark(
+        mark="barY", 
+        data=data.frame(x=letters[1:5], y=1:5), 
+        options=list(x="x", y="y")))
     })
     }
 ```
