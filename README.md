@@ -24,10 +24,22 @@ for Observable when the app is started.
 
 ```
 fluidPage(
-    htmltools::HTML('<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>'), 
-    htmltools::HTML('<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>'),
+    htmltools::HTML('<script src="https://cdn.jsdelivr.net/npm/d3"></script>'), 
+    htmltools::HTML('<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot"></script>'),
     ...
 ```
+
+The above will import the latest version from NPM each time the app loads. This can be risky if breaking changes have been introduced, the observable plot library has been evolving significantly over the last couple of years. To import a specific version every time the app is loaded include the version number after `@` as follows: 
+
+```
+htmltools::HTML('<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5"></script>')
+htmltools::HTML('<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.13"></script>'),
+```
+
+Available versions: 
+
+ - [d3](https://www.npmjs.com/package/d3?activeTab=versions)
+ - [observablehq/plot](https://www.npmjs.com/package/@observablehq/plot?activeTab=versions)
 
 # Usage
 
