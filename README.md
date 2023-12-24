@@ -67,6 +67,9 @@ server <- function(input, output) {
     }
 ```
 
+# Live
+
+Example 3 from this project are available on [ShinyLive](https://shinylive.io/r/app/#gist=2bc16189a629451bc6254bc46ca50ed4), use the editor to explore the data and charting features. 
 
 
 

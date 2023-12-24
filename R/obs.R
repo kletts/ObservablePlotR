@@ -28,8 +28,9 @@
 #' obsjs_mark("frame")  # add box to plot panel area
 #' obsjs_mark("ruleY", data=0) # add x axis at y=0 
 #' obsjs_mark("barY", data=data.frame(x=letters[1:5], y=1:5), options=list(x="x", y="y"))
+#' obsjs_mark("line", data=data.frame(x=letters[1:5], y=1:5), options=list(x="x", y="y"), transform="regression")
 
-obsjs_mark <- function(mark, data=NULL, options=NULL) { 
+obsjs_mark <- function(mark, data=NULL, options=NULL, transform=NULL) { 
   if (is.null(data) & is.null(options)) { 
     return(glue::glue("Plot.{mark}()")) 
   } else if (is.null(options)) { 
@@ -39,7 +40,11 @@ obsjs_mark <- function(mark, data=NULL, options=NULL) {
     options  <- jsonlite::toJSON(options, auto_unbox = TRUE) 
     return(glue::glue("Plot.{mark}({options})")) 
   } else { 
-    options  <- jsonlite::toJSON(options, auto_unbox = TRUE) 
+    options  <- jsonlite::toJSON(options, auto_unbox = TRUE)
+    if (!is.null(transform)) { 
+      options <- glue::glue("Plot.{transform}({options})")
+      
+    }
     data <- jsonlite::toJSON(data) 
     return(glue::glue("Plot.{mark}({data}, {options})"))
   }}

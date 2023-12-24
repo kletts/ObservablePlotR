@@ -34,11 +34,13 @@ server <- function(input, output) {
     mregression <- obsjs_mark(mark="linearRegressionY", 
                               data=cars, 
                               options=list(y="mpg", x="disp", stroke=input$fct, clip=TRUE))
-    options <- list(height=400, width=600, color=list(legend=TRUE, scheme="Dark2"), 
+    options <- list(height=400, 
+                    width=600, 
+                    color=list(legend=TRUE, scheme="Dark2"), 
                     style=list(fontFamily='Georgia'), 
                     x=list(label="Engine displacement"), 
                     y=list(label="Miles per gallon"))
-    obsjs_plot(inputId="carplot",  mframe, mdensity, mdot, mregression, options=options)
+    obsjs_plot(inputId="carplot", mframe, mdensity, mdot, mregression, options=options)
   })
 }
 
