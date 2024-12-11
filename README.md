@@ -71,5 +71,8 @@ server <- function(input, output) {
 
 Example 3 from this project are available on [ShinyLive](https://shinylive.io/r/app/#gist=2bc16189a629451bc6254bc46ca50ed4), use the editor to explore the data and charting features. 
 
+# Arrow functions 
 
+Javascript arrow functions can be specified in marks and options by wrapping the string in the R function `literal`. 
+See Example 4 on [ShinyLive](https://shinylive.io/r/app/#gist=35fe75cec6b8764db34fc65dc26d29ce). 
 

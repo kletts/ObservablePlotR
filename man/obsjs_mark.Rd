@@ -4,7 +4,7 @@
 \alias{obsjs_mark}
 \title{Observable Plot Mark}
 \usage{
-obsjs_mark(mark, data = NULL, options = NULL)
+obsjs_mark(mark, data = NULL, options = NULL, transform = NULL)
 }
 \arguments{
 \item{mark}{Character the plot \href{https://observablehq.com/plot/features/marks}{mark} some common ones are:
@@ -34,15 +34,16 @@ obsjs_mark(mark, data = NULL, options = NULL)
 \item tip titles \code{title}
 }}
 }
-\value{
-Character, the mark data and specification
-}
 \description{
 Takes a data frame, mark type and specification list and compiles a JSON format specification
 mark specification for Observable Plot JS library.
+}
+\details{
+To pass a arrow functions to Observable Plot in place of variable strings use the \code{\link[=literal]{literal()}} function.
 }
 \examples{
 obsjs_mark("frame")  # add box to plot panel area
 obsjs_mark("ruleY", data=0) # add x axis at y=0 
 obsjs_mark("barY", data=data.frame(x=letters[1:5], y=1:5), options=list(x="x", y="y"))
+obsjs_mark("line", data=data.frame(x=letters[1:5], y=1:5), options=list(x="x", y="y"), transform="regression")
 }

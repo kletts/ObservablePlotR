@@ -22,7 +22,8 @@
 #'  * faceting variable in the x dimension `fx` 
 #'  * text labels `text`
 #'  * tip titles `title`
-#' @return Character, the mark data and specification
+#' @details
+#' To pass a arrow functions to Observable Plot in place of variable strings use the [literal()] function. 
 #' @export
 #' @examples
 #' obsjs_mark("frame")  # add box to plot panel area
@@ -78,5 +79,28 @@ obsjs_plot <- function(inputId,  ..., options=NULL) {
             const {inputId}plot = Plot.plot({ spec }); 
             document.querySelector("#{inputId}").append({inputId}plot);
         </script>')  
-  htmltools::HTML(as.character(spec)) } 
+  spec <- as.character(spec) 
+  spec <- gsub('\\"beginliteral|endliteral\\"', '', spec)  
+  htmltools::HTML(spec)
+  } 
+
+#' Literal
+#' @description 
+#' To pass a template literal arrow function to Observable Plot, use the `literal` function to wrap the string. 
+#' For example to apply an axis tick format, you would use the [d3.format](https://d3js.org/d3-format) library and 
+#' specify desired format using an arrow function, for example: `d => d3.format("0.2f")(d)` applies two decimal places. 
+#' The option can be specified by wrapping the javascript arrow function in the R function as 
+#' `tickFormat=literal("d => d3.format('0.2f')(d)")`, note the use of single quotes 
+#' inside the double quotes.  
+#' Example app 4 illustrates some applications. 
+#' @param x Character, the string to be wrapped  
+#' @return Character, the string wrapped, with beginliteral and endliteral tags and single quotes replacing 
+#' any internal double quotes.
+#' @export
+#' @examples
+#' literal("d => d3.format('0.2f')(d)")
+literal <- function(x) { 
+  x <- gsub('"', "'", x)
+  paste("beginliteral", x, "endliteral")
+}
 
